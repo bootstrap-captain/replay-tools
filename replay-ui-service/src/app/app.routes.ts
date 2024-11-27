@@ -1,8 +1,11 @@
 import {Routes} from '@angular/router';
-import {SearchPageComponent} from './search-page/search-page.component';
+import {HomePageComponent} from './home-page/home-page.component';
 
 export const routes: Routes = [
   {
-    path: '/search', component: SearchPageComponent
+    path: 'search', component: HomePageComponent
+  },
+  {
+    path: '', component: HomePageComponent
   }
 ];

@@ -3,6 +3,6 @@ export type HomeSearchRequest = {
   serviceNames: string[];
   replayStatus?: string,
   messageStatus?: string,
-  partnerId?:string,
-  messageDescription?:string,
+  partnerId?: string,
+  messageDescription?: string,
 }

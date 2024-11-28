@@ -1,78 +1,76 @@
-<div class="search-box">
-  <form [formGroup]="homeSearchForm">
-    <div>
-      <!--first line search -->
-      <div class="single-row">
-        <!--uniqueId-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Unique Id</mat-label>
-          <input formControlName="uniqueIds" matInput type="text">
-        </mat-form-field>
+<form [formGroup]="homeSearchForm">
+  <div>
+    <!--first line search -->
+    <div class="single-row">
+      <!--uniqueId-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Unique Id</mat-label>
+        <input formControlName="uniqueIds" matInput type="text">
+      </mat-form-field>
 
-        <!--service name-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Service Name</mat-label>
-          <mat-select formControlName="serviceNames" multiple>
-            @for (serviceName of serviceNameOptions; track serviceName) {
-              <mat-option [value]="serviceName">{{ serviceName }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!--second line search -->
-      <div class="single-row">
-        <!--replay status-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Replay Status</mat-label>
-          <mat-select formControlName="replayStatus">
-            @for (replayStatus of replayStatusOptions; track replayStatus) {
-              <mat-option [value]="replayStatus">{{ replayStatus }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <!--message status-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Message Status</mat-label>
-          <mat-select formControlName="messageStatus">
-            @for (messageStatus of messageStatusOptions; track messageStatus) {
-              <mat-option [value]="messageStatus">{{ messageStatus }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div style="margin-bottom: 20px">
-        <!--值绑定，值变化时候如何-->
-        <mat-slide-toggle (change)="switchToggle()" [checked]="isAdvancedSearchOpen" labelPosition="before">Advanced
-          Search
-        </mat-slide-toggle>
-      </div>
-
-      <!--third line search -->
-      <div *ngIf="isAdvancedSearchOpen" class="single-row">
-        <!--partnerId-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Partner Id</mat-label>
-          <input formControlName="partnerId" matInput type="text">
-        </mat-form-field>
-
-        <!--message description-->
-        <mat-form-field appearance="outline" class="single-cell">
-          <mat-label>Message Description</mat-label>
-          <mat-select formControlName="messageDescription">
-            @for (messageDescription of messageDescriptionOptions; track messageDescription) {
-              <mat-option [value]="messageDescription">{{ messageDescription }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <!--service name-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Service Name</mat-label>
+        <mat-select formControlName="serviceNames" multiple>
+          @for (serviceName of serviceNameOptions; track serviceName) {
+            <mat-option [value]="serviceName">{{ serviceName }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
     </div>
-  </form>
 
-  <div style="display: flex; justify-content: flex-end; margin-right: 300px">
-    <button (click)="search()" class="home-button" mat-flat-button>Search</button>
-    <button (click)="reset()" class="home-button" mat-flat-button>Reset</button>
+    <!--second line search -->
+    <div class="single-row">
+      <!--replay status-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Replay Status</mat-label>
+        <mat-select formControlName="replayStatus">
+          @for (replayStatus of replayStatusOptions; track replayStatus) {
+            <mat-option [value]="replayStatus">{{ replayStatus }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <!--message status-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Message Status</mat-label>
+        <mat-select formControlName="messageStatus">
+          @for (messageStatus of messageStatusOptions; track messageStatus) {
+            <mat-option [value]="messageStatus">{{ messageStatus }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="margin-bottom: 20px">
+      <!--值绑定，值变化时候如何-->
+      <mat-slide-toggle (change)="switchToggle()" [checked]="isAdvancedSearchOpen" labelPosition="before">Advanced
+        Search
+      </mat-slide-toggle>
+    </div>
+
+    <!--third line search -->
+    <div *ngIf="isAdvancedSearchOpen" class="single-row">
+      <!--partnerId-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Partner Id</mat-label>
+        <input formControlName="partnerId" matInput type="text">
+      </mat-form-field>
+
+      <!--message description-->
+      <mat-form-field appearance="outline" class="single-cell">
+        <mat-label>Message Description</mat-label>
+        <mat-select formControlName="messageDescription">
+          @for (messageDescription of messageDescriptionOptions; track messageDescription) {
+            <mat-option [value]="messageDescription">{{ messageDescription }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
+</form>
+
+<div style="display: flex; justify-content: flex-end; margin-right: 300px">
+  <button (click)="search()" class="home-button" mat-flat-button>Search</button>
+  <button (click)="reset()" class="home-button" mat-flat-button>Reset</button>
 </div>

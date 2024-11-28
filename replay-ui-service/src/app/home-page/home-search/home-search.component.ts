@@ -7,6 +7,7 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {NgIf} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {ApiService} from '../../service/root/api.service';
+import {HomeMetadata} from '../../entity/response';
 
 @Component({
   selector: 'app-home-search',
@@ -28,18 +29,23 @@ export class HomeSearchComponent implements OnInit {
   constructor(private apiService: ApiService) {
   }
 
+  messageStatusOptions: string[] = [];
+  messageDescriptionOptions: string[] = [];
+  serviceNameOptions: string[] = [];
+
   async ngOnInit(): Promise<void> {
-    let homePageMetadata = await this.apiService.getHomePageMetadata();
-    console.log(homePageMetadata);
+    let homePageMetadata: HomeMetadata = await this.apiService.getHomePageMetadata();
+    console.log(`home-metadata:`, homePageMetadata);
+    this.messageStatusOptions = homePageMetadata.messageStatus;
+    this.messageDescriptionOptions = homePageMetadata.messageDescription;
+    this.serviceNameOptions = homePageMetadata.serviceName;
   }
 
   /*toggle for advanced search*/
   public isAdvancedSearchOpen = false;
 
-  serviceNameOptions: string[] = ['Erick-Service', 'Lucy-Service'];
+
   replayStatusOptions: string[] = ['UNPROCESSED', 'PROCESSED'];
-  messageStatusOptions: string[] = ['OK', 'NOK', 'NACK', 'NO RESPONSE'];
-  messageDescriptionOptions: string[] = ['error-1', 'error-2', 'error-3'];
 
 
   homeSearchForm = new FormGroup({

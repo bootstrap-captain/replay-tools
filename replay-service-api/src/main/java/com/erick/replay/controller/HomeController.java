@@ -2,6 +2,7 @@ package com.erick.replay.controller;
 
 import com.erick.replay.entity.Metadata;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.util.List;
 @RequestMapping("/home")
 @RestController
 @Slf4j
+@CrossOrigin
 public class HomeController {
 
     @GetMapping("/metadata")

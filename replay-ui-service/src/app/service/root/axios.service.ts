@@ -28,19 +28,21 @@ export class AxiosService {
   }
 
   private requestInterceptor = () => {
-    this.axiosInstance?.interceptors.request.use((function (request: InternalAxiosRequestConfig): InternalAxiosRequestConfig<any> {
+    this.axiosInstance.interceptors.request.use((function (request: InternalAxiosRequestConfig): InternalAxiosRequestConfig<any> {
       request.headers.set('Authorization', 'Bearer ' + token);
       return request;
     }))
   }
 
   private responseInterceptor = () => {
-    this.axiosInstance?.interceptors.response.use(
-      function (response: AxiosResponse): AxiosResponse<any, any> {
-        return response.data;
+    this.axiosInstance.interceptors.response.use(
+      function (response){
+        /*2xx*/
+        return response;
       },
 
-      function (error: AxiosResponse) {
+      /*beyond 2xx*/
+      function (error) {
         console.log(`response error: ${error}`);
       })
   }
